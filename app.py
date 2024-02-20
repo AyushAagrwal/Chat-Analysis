@@ -2,7 +2,7 @@ import streamlit as st
 import function
 import preprocessing
 import matplotlib.pyplot as plt
-import seaborn as sns
+# import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -96,11 +96,11 @@ if uploaded_file is not None:
             with col2:
                 pass
         
-        st.title("Weekly Activity Map")
-        user_heatmap = function.activity_heatmap(selected_user,df)
-        fig,ax = plt.subplots()
-        ax = sns.heatmap(user_heatmap)
-        st.pyplot(fig)
+        # st.title("Weekly Activity Map")
+        # user_heatmap = function.activity_heatmap(selected_user,df)
+        # fig,ax = plt.subplots()
+        # ax = sns.heatmap(user_heatmap)
+        # st.pyplot(fig)
 
         #WordCloud
         st.title("WordCloud")
