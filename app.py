@@ -2,6 +2,7 @@ import streamlit as st
 import function
 import preprocessing
 import matplotlib.pyplot as plt
+import pandas as pd
 # import seaborn as sns
 import warnings
 warnings.filterwarnings('ignore')
