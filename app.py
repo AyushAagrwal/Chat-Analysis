@@ -8,6 +8,8 @@ warnings.filterwarnings('ignore')
 
 st.sidebar.title("Whatsapp Chat Analyzer")
 
+search_word = st.sidebar.text_input("Search for a word")
+
 uploaded_file = st.sidebar.file_uploader("Choose a file")
 if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
@@ -124,3 +126,14 @@ if uploaded_file is not None:
             fig,ax=plt.subplots()
             ax.pie(emoji_df[1].head(),labels=emoji_df[0].head(),autopct="%0.2f")
             st.pyplot(fig)
+
+                # Search functionality
+        if search_word:
+            word_counts = df[df['message'].str.contains(search_word, case=False)]['user'].value_counts()
+            st.title(f"Occurrences of Word '{search_word}'")
+            st.write(f"The word '{search_word}' appeared {word_counts.sum()} times in the chat.")
+            if not word_counts.empty:
+                st.write("Occurrences by user:")
+                # Beautiful DataFrame
+                styled_df = pd.DataFrame({"User": word_counts.index, "Occurrences": word_counts.values}).style.bar(subset=["Occurrences"], color='#d65f5f')
+                st.dataframe(styled_df)
