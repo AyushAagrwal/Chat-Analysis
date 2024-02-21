@@ -20,15 +20,10 @@ if uploaded_file is not None:
     #showing the dataframe
     # st.dataframe(df)
 
-    if 'group_notification' in df['user'].unique():
-        user_list = df['user'].unique().tolist()
-        user_list.remove('group_notification')
-        user_list.sort()
-        user_list.insert(0, "Overall")
-    else:
-        user_list = df['user'].unique().tolist()
-        user_list.sort()
-        user_list.insert(0, "Overall")
+    user_list=df['user'].unique().tolist()
+    user_list.remove('group_notification')
+    user_list.sort()
+    user_list.insert(0,"Overall")
 
     selected_user=st.sidebar.selectbox("Show the analysis wrt ",user_list)
 
